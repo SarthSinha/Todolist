@@ -1,9 +1,4 @@
-#FROM nginxinc/nginx-unprivileged:stable
-#COPY build /usr/share/nginx/html
-
-# FROM ubuntu
-# RUN apt-get update
-# RUN apt-get install nginx -y
-# COPY build /var/www/html/
-# EXPOSE 80
-# CMD [“nginx”,”-g”,”daemon off;”]
+FROM openjdk:11-jre-slim
+EXPOSE 3001
+COPY target/to-do-list-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
